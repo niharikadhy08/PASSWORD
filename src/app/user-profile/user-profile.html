@@ -1,0 +1,377 @@
+<main class="profile-page">
+  <header class="top-header">
+    <section class="brand-group" aria-label="Portal branding">
+      <span class="rail-icon material-icons" aria-hidden="true">train</span>
+
+      <div>
+        <h1>e-Booking (Domestic)</h1>
+        <p>Indian Railways Freight Portal</p>
+      </div>
+    </section>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <a class="nav-link" href="#" aria-label="Reports">
+        <span class="material-icons" aria-hidden="true">bar_chart</span>
+        Reports
+      </a>
+
+      <a class="nav-link" href="#" aria-label="Change Terminal">
+        <span class="material-icons" aria-hidden="true">sync_alt</span>
+        Change Terminal
+      </a>
+    </nav>
+
+    <section class="header-actions" aria-label="Session details">
+      <span class="time-stamp">
+        <span class="material-icons" aria-hidden="true">schedule</span>
+        {{ currentDateTime() }}
+      </span>
+
+      <button class="user-pill" type="button">
+        <span class="avatar">AA</span>
+
+        <span class="user-text">
+          <strong>AABCRW1961A</strong>
+          <small>Customer (Super)</small>
+        </span>
+
+        <span class="material-icons" aria-hidden="true">
+          expand_more
+        </span>
+      </button>
+    </section>
+  </header>
+
+  <section class="status-bar" aria-label="Login context">
+    <span>
+      Logged in as:
+      <strong>AABCRW1961A</strong>
+    </span>
+
+    <span class="terminal">
+      Terminal:
+      <strong>TONDIARPET MARSHALLING YARD (TNPM)</strong>
+    </span>
+  </section>
+
+  <section class="content-wrap">
+    <section
+      class="account-banner"
+      aria-label="Account security summary"
+    >
+      <div class="company-group">
+        <span
+          class="company-icon material-icons"
+          aria-hidden="true"
+        >
+          business
+        </span>
+
+        <div>
+          <div class="company-title-row">
+            <h2>WESTERN CARRIERS (INDIA) LTD</h2>
+
+            <span class="active-badge">
+              <span></span>
+              ACTIVE
+            </span>
+          </div>
+
+          <dl class="account-meta">
+            <div>
+              <dt>CustCode:</dt>
+              <dd>WTN</dd>
+            </div>
+
+            <div>
+              <dt>LogInType:</dt>
+              <dd>CUST</dd>
+            </div>
+
+            <div>
+              <dt>SuperUser:</dt>
+              <dd>Yes</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="security-copy">
+        <span>E-CUSTOMER ACCOUNT SECURITY</span>
+        <strong>AABCRW1961A</strong>
+      </div>
+    </section>
+
+    <section class="password-card" aria-label="Change password">
+      <div class="illustration-pane" aria-hidden="true">
+        <div class="people-illustration">
+          <div class="person person-left">
+            <span class="hair"></span>
+            <span class="head"></span>
+            <span class="torso"></span>
+            <span class="arm arm-one"></span>
+            <span class="arm arm-two"></span>
+            <span class="leg leg-one"></span>
+            <span class="leg leg-two"></span>
+          </div>
+
+          <div class="key-shape">
+            <span class="key-ring"></span>
+            <span class="key-stem"></span>
+            <span class="key-bit bit-one"></span>
+            <span class="key-bit bit-two"></span>
+          </div>
+
+          <div class="person person-right">
+            <span class="head"></span>
+            <span class="hair"></span>
+            <span class="torso"></span>
+            <span class="arm arm-one"></span>
+            <span class="arm arm-two"></span>
+            <span class="leg leg-one"></span>
+            <span class="leg leg-two"></span>
+          </div>
+
+          <div class="reset-card">
+            <span class="lock-body"></span>
+            <span class="lock-loop"></span>
+
+            <strong>
+              Reset<br />
+              Your Password
+            </strong>
+
+            <span class="mini-field"></span>
+            <span class="mini-field"></span>
+            <span class="mini-button"></span>
+          </div>
+
+          <span class="background-lock material-icons">
+            lock
+          </span>
+        </div>
+      </div>
+
+      <div class="form-pane">
+        <div class="form-title">
+          <span
+            class="title-icon material-icons"
+            aria-hidden="true"
+          >
+            lock
+          </span>
+
+          <h3>Change Password</h3>
+        </div>
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="saveChanges()"
+          novalidate
+        >
+          <div class="form-grid">
+            <label class="field">
+              <span>UserName</span>
+
+              <span class="input-shell readonly">
+                <input
+                  formControlName="userName"
+                  type="text"
+                />
+
+                <span
+                  class="material-icons"
+                  aria-hidden="true"
+                >
+                  badge
+                </span>
+              </span>
+            </label>
+
+            <label class="field">
+              <span>Old Password <b>*</b></span>
+
+              <span class="input-shell">
+                <input
+                  formControlName="oldPassword"
+                  [type]="showOldPassword() ? 'text' : 'password'"
+                  placeholder="Old Password"
+                />
+
+                <button
+                  type="button"
+                  class="icon-button"
+                  (click)="toggleOldPassword()"
+                  aria-label="Toggle old password visibility"
+                >
+                  <span
+                    class="material-icons"
+                    aria-hidden="true"
+                  >
+                    {{
+                      showOldPassword()
+                        ? 'visibility_off'
+                        : 'visibility'
+                    }}
+                  </span>
+                </button>
+              </span>
+            </label>
+
+            <label class="field">
+              <span>New Password <b>*</b></span>
+
+              <span class="input-shell">
+                <input
+                  formControlName="newPassword"
+                  [type]="showNewPassword() ? 'text' : 'password'"
+                  placeholder="New Password"
+                />
+
+                <button
+                  type="button"
+                  class="icon-button"
+                  (click)="toggleNewPassword()"
+                  aria-label="Toggle new password visibility"
+                >
+                  <span
+                    class="material-icons"
+                    aria-hidden="true"
+                  >
+                    {{
+                      showNewPassword()
+                        ? 'visibility_off'
+                        : 'visibility'
+                    }}
+                  </span>
+                </button>
+              </span>
+            </label>
+
+            <label class="field">
+              <span>Confirm Password <b>*</b></span>
+
+              <span
+                class="input-shell"
+                [class.input-error]="confirmPasswordInvalid"
+              >
+                <input
+                  formControlName="confirmPassword"
+                  [type]="
+                    showConfirmPassword()
+                      ? 'text'
+                      : 'password'
+                  "
+                  placeholder="Re-enter password"
+                />
+
+                <button
+                  type="button"
+                  class="icon-button"
+                  (click)="toggleConfirmPassword()"
+                  aria-label="Toggle confirm password visibility"
+                >
+                  <span
+                    class="material-icons"
+                    aria-hidden="true"
+                  >
+                    {{
+                      showConfirmPassword()
+                        ? 'visibility_off'
+                        : 'visibility'
+                    }}
+                  </span>
+                </button>
+              </span>
+            </label>
+          </div>
+
+          <label class="field mobile-field">
+            <span>Mobile Number <b>*</b></span>
+
+            <span class="mobile-row">
+              <span class="input-shell">
+                <input
+                  formControlName="mobileNumber"
+                  type="tel"
+                />
+
+                <span
+                  class="material-icons"
+                  aria-hidden="true"
+                >
+                  contact_phone
+                </span>
+              </span>
+
+              <button
+                class="verify-button"
+                type="button"
+              >
+                Verify
+              </button>
+            </span>
+          </label>
+
+          <section
+            class="requirements-panel"
+            aria-label="Password requirements"
+          >
+            <h4>Password Requirements</h4>
+
+            <ul>
+              @for (
+                requirement of passwordRequirements();
+                track requirement.label
+              ) {
+                <li [class.met]="requirement.met">
+                  {{ requirement.label }}
+                </li>
+              }
+            </ul>
+          </section>
+
+          <div class="form-actions">
+            <button
+              class="clear-button"
+              type="button"
+              (click)="clearForm()"
+            >
+              Clear
+            </button>
+
+            <button
+              class="save-button"
+              type="submit"
+            >
+              <span
+                class="material-icons"
+                aria-hidden="true"
+              >
+                save
+              </span>
+
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+
+  <footer class="page-footer">
+    <span>
+      e-Booking (Domestic) - Indian Railways Freight Portal
+    </span>
+
+    <strong>Session: AABCRW1961A</strong>
+  </footer>
+
+  <button
+    class="help-button"
+    type="button"
+    aria-label="Help"
+  >
+    ?
+  </button>
+</main>
